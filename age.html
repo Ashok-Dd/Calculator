@@ -1,0 +1,196 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Age Calculator</title>
+        <style>
+            body{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            a{
+                text-decoration: none;
+            }
+            a .back{
+                border: 2px solid black;
+                width: 100px;
+                background-color: rgb(88, 49, 180);
+                color: whitesmoke;
+                margin-top: 495%;
+                
+            }
+            .back:hover{
+                background-color: black;
+            }
+            .entering{
+                margin-top: 7%;
+                background-color: whitesmoke;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);;
+                border-radius:0 0 50%;
+                border: 0px solid black;
+                padding: 2%;
+                width: 40%;
+                height: 30%;
+                font-size: 2em;
+            }
+            input[type="number"]{
+                padding: 8px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+                width: 90%;  
+                height: auto;
+                font-size: 20px;
+                border: 1px solid lightgrey;
+            }
+            button{
+                width: 50px;
+                height: 50px;
+                background-color: rgb(88, 49, 180);
+                border-radius: 50%;
+                color: whitesmoke;
+                font-size: 30px;
+                padding: 0;
+                margin-right: 10%;
+                border: 2px solid rgb(88, 49, 180);
+            }
+            button:hover{
+                background-color: black;
+                border: 2px solid black;
+            }
+            label{
+                font-size: 20px;
+            }
+            .btn
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .main{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            
+            h2{
+                margin-left: 20%;
+            }
+            span{
+                color: rgb(88, 49, 180);
+                font-weight: bolder;
+                font-size: 1em;
+            }
+            p{
+                color: red;
+                font-size: 20px;
+                text-align: center;
+            }
+            @media screen and (max-width:480px) {
+                .entering{
+                margin-top: 67%;
+                background-color: whitesmoke;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);;
+                border-radius:0 0 50%;
+                border: 0px solid black;
+                padding: 2%;
+                width: 90%;
+                height: 30%;
+                font-size: 1em;
+            }
+            a .back{
+                border: 2px solid black;
+                width: 100px;
+                background-color: rgb(88, 49, 180);
+                color: whitesmoke;
+                margin-top: 35%;
+                
+            }
+            }
+        </style>
+    </head>
+    <body bgcolor="lightgrey">
+        
+        <div class="entering">
+            <form action="">
+            <div class="main">
+                <div class="dob">
+                    <label for="day">DAY:</label><br>
+                    <input type="number" id="day" min="1" max="31" required>
+                </div>
+                
+                <div class="dob">
+                    <label for="month">MONTH:</label><br>
+                    <input type="number" id="month" min="1" max="12" required>
+                </div>
+                
+                <div class="dob">
+                    <label for="year">YEAR:</label><br>
+                <input type="number" id="year" min="1900" max="2100" required>
+                </div>
+                
+                
+            </div>
+            <div class="btn">
+                <hr>
+                <button type="button" onclick="calculateAge()">&#8595;</button>
+                </div>
+        </form>
+        <p id="wrong"></p>
+        <i><h2><span id="years">--</span> Years</h2></i>
+            <i><h2><span id="months">--</span> Months</h2></i>
+            <i><h2><span id="days">--</span> Days</h2></i>
+        </div>
+        <a href="index.html">
+        <div class="back">
+            <h2>Back</h2>
+        </div>
+    </a>
+        <script>
+            function isValidDate(day, month, year) {
+                const date = new Date(year, month - 1, day);
+                return date.getFullYear() === parseInt(year) &&
+                    date.getMonth() === parseInt(month) - 1 &&
+                    date.getDate() === parseInt(day);
+            }
+
+            function calculateAge() {
+                const day = document.getElementById('day').value;
+                const month = document.getElementById('month').value;
+                const year = document.getElementById('year').value;
+                
+                // Check if the entered date is valid
+                if (!isValidDate(day, month, year)) {
+                    document.getElementById('wrong').innerHTML = 'Please enter a valid date of birth.';
+                    return;
+                } else {
+                    document.getElementById('wrong').innerHTML = '';
+                }
+
+                const birthDate = new Date(year, month - 1, day);
+                const currentDate = new Date();
+
+                let ageYears = currentDate.getFullYear() - birthDate.getFullYear();
+                let ageMonths = currentDate.getMonth() - birthDate.getMonth();
+                let ageDays = currentDate.getDate() - birthDate.getDate();
+
+                if (ageDays < 0) {
+                    ageMonths--;
+                    ageDays += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
+                }
+                if (ageMonths < 0) {
+                    ageYears--;
+                    ageMonths += 12;
+                }
+
+                document.getElementById('years').textContent = ageYears;
+                document.getElementById('months').textContent = ageMonths;
+                document.getElementById('days').textContent = ageDays;
+            }
+        </script>
+    </body>
+    </html>

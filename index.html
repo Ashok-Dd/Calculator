@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body bgcolor="whitesmoke">
+    <div class="total">
+        <div class="screen" id="screen"></div>
+        <div class="keypad">
+            <div class="buttons operator" id="ac" onclick="display_on_screen('ac')"><span>AC</span></div>
+            <div class="buttons operator" id="backspace" onclick="display_on_screen('backspace')"><span>⌫</span></div>
+            <div class="buttons operator" id="fact" onclick="display_on_screen('fact')"><span>x!</span></div>
+            <div class="buttons operator" id="+" onclick="display_on_screen('+')"><span>+</span></div>
+            <div class="buttons" id="7" onclick="display_on_screen('7')"><span>7</span></div>
+            <div class="buttons" id="8" onclick="display_on_screen('8')"><span>8</span></div>
+            <div class="buttons" id="9" onclick="display_on_screen('9')"><span>9</span></div>
+            <div class="buttons operator" id="-" onclick="display_on_screen('-')"><span>-</span></div>
+            <div class="buttons" id="4" onclick="display_on_screen('4')"><span>4</span></div>
+            <div class="buttons" id="5" onclick="display_on_screen('5')"><span>5</span></div>
+            <div class="buttons" id="6" onclick="display_on_screen('6')"><span>6</span></div>
+            <div class="buttons operator" id="*" onclick="display_on_screen('*')"><span>×</span></div>
+            <div class="buttons" id="1" onclick="display_on_screen('1')"><span>1</span></div>
+            <div class="buttons" id="2" onclick="display_on_screen('2')"><span>2</span></div>
+            <div class="buttons" id="3" onclick="display_on_screen('3')"><span>3</span></div>
+            <div class="buttons operator" id="/" onclick="display_on_screen('/')"><span>÷</span></div>
+            <div class="buttons" id="%" onclick="display_on_screen('%')"><span>%</span></div>
+            <div class="buttons" id="0" onclick="display_on_screen('0')"><span>0</span></div>
+            <div class="buttons" id="." onclick="display_on_screen('.')"><span>.</span></div>
+            <div class="buttons operator result" id="=" onclick="display_on_screen('=')"><span>=</span></div>
+        </div>
+    </div>
+    <a href="age.html">
+    <div class="age">
+        <h2>Age Calculator</h2>
+    </div>
+</a>
+    <script src="script.js"></script>
+</body>
+</html>
